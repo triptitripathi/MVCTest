@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<MVCtest.Models.Employee>
+@{
+    ViewBag.Title = "TestFunc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="buttonposition">
+    <a class="btn btn-primary" onclick="location.href='@Url.Action("AddEmployee", "Employee")'">Add New</a>
+    <a class="btn btn-primary" onclick="location.href='@Url.Action("Logout", "Employee")'">Logout</a>
+</div>
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Employee Id </th>
+        <th>Name </th>
+        <th>Department</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Hire Date</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Department</td>
+            <td>@item.Contact</td>
+            <td>@item.Email</td>
+            <td>@item.HireDate</td>
+            <td><button type="button" class="btn btn-info " onclick="location.href='@Url.Action("DeleteById", "Employee",new{Id=item.Id})'">Delete</button> <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" onclick="location.href='@Url.Action("EditEmployee", "Employee")'">Edit</button></td>
+
+        </tr>
+    }
+<style>
+    .buttonposition{
+        float:right;
+    }
+</style>
